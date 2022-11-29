@@ -1,5 +1,6 @@
 package io.github.wesleyosantos91.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,6 +38,7 @@ public class AuthorEntity {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "author")
     private List<BookEntity> books;
 }
